@@ -1,0 +1,28 @@
+stages:
+  preprocess:
+    cmd: python src/preprocess.py
+    deps:
+      - src/preprocess.py
+      - data/nigeria_housing_data_v1.csv
+    outs:
+      - data/X_train.csv
+      - data/X_test.csv
+      - data/y_train.csv
+      - data/y_test.csv
+      - data/preprocessor.pkl
+
+  train:
+    cmd: python src/train.py
+    deps:
+      - src/train.py
+      - data/X_train.csv
+      - data/X_test.csv
+      - data/y_train.csv
+      - data/y_test.csv
+      - data/preprocessor.pkl
+    params:
+      - train.random_forest.n_estimators
+      - train.random_forest.max_depth
+    metrics:
+      - metrics.json:
+          cache: false

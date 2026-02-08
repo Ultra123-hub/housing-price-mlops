@@ -1,0 +1,70 @@
+schema: '2.0'
+stages:
+  preprocess:
+    cmd: python src/preprocess.py
+    deps:
+    - path: data/nigeria_housing_data_v1.csv
+      hash: md5
+      md5: fc5364254e84bb5636d92e7283c03d2c
+      size: 74198
+    - path: src/preprocess.py
+      hash: md5
+      md5: f6fbd4306a58b8b298b53c54819def97
+      size: 1560
+    outs:
+    - path: data/X_test.csv
+      hash: md5
+      md5: 48a765fe82cce2ea253879bb0e59f363
+      size: 13566
+    - path: data/X_train.csv
+      hash: md5
+      md5: 8c98eafed830b68d57718a72ae048801
+      size: 53517
+    - path: data/preprocessor.pkl
+      hash: md5
+      md5: c973d86ffcd058093ac961163b6cfa3d
+      size: 1026
+    - path: data/y_test.csv
+      hash: md5
+      md5: bc7a89c28fc462204800ea8c7dc4ffca
+      size: 2583
+    - path: data/y_train.csv
+      hash: md5
+      md5: c6d97b666ad0ce4d9a9d62a146b1a616
+      size: 10264
+  train:
+    cmd: python src/train.py
+    deps:
+    - path: data/X_test.csv
+      hash: md5
+      md5: 48a765fe82cce2ea253879bb0e59f363
+      size: 13566
+    - path: data/X_train.csv
+      hash: md5
+      md5: 8c98eafed830b68d57718a72ae048801
+      size: 53517
+    - path: data/preprocessor.pkl
+      hash: md5
+      md5: c973d86ffcd058093ac961163b6cfa3d
+      size: 1026
+    - path: data/y_test.csv
+      hash: md5
+      md5: bc7a89c28fc462204800ea8c7dc4ffca
+      size: 2583
+    - path: data/y_train.csv
+      hash: md5
+      md5: c6d97b666ad0ce4d9a9d62a146b1a616
+      size: 10264
+    - path: src/train.py
+      hash: md5
+      md5: 42865c8da3f3c5795b0dacdb0bbea7b7
+      size: 2935
+    params:
+      params.yaml:
+        train.random_forest.max_depth: 10
+        train.random_forest.n_estimators: 100
+    outs:
+    - path: metrics.json
+      hash: md5
+      md5: 3efb1d6afb330838ca0a7c0375534b63
+      size: 279
