@@ -1,0 +1,5 @@
+outs:
+- md5: fc5364254e84bb5636d92e7283c03d2c
+  size: 74198
+  hash: md5
+  path: nigeria_housing_data_v1.csv
