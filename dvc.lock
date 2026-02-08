@@ -57,8 +57,8 @@ stages:
       size: 10264
     - path: src/train.py
       hash: md5
-      md5: 42865c8da3f3c5795b0dacdb0bbea7b7
-      size: 2935
+      md5: cc6e3e03ba7b37a6c13a9e95121bed8a
+      size: 2827
     params:
       params.yaml:
         train.random_forest.max_depth: 10
@@ -66,5 +66,5 @@ stages:
     outs:
     - path: metrics.json
       hash: md5
-      md5: 3efb1d6afb330838ca0a7c0375534b63
-      size: 279
+      md5: 668c45a4727915b29fa5a9a950d97213
+      size: 280
